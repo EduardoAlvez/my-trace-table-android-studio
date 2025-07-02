@@ -337,6 +337,8 @@ public class Exercicio extends AppCompatActivity {
                 imagemExercicio.setImageResource(R.drawable.aritmetico_exercicio1);
                 bloqueaCampos(respostasAritmetico.getExercicio1());
                 limparCampos(respostasAritmetico.getExercicio1());
+                //Integer.parseInt(numeroExercicio);
+                // deixar mais limpo, muita repetição
                 //ocultando a linha 6
                 legendaLinha6.setVisibility(View.INVISIBLE);
                 campo16.setVisibility(View.INVISIBLE);
@@ -575,6 +577,7 @@ public class Exercicio extends AppCompatActivity {
             if (resposta.get(i).equals("*")) {
                 campos.get(i).setFocusable(false);
                 campos.get(i).setBackground(ContextCompat.getDrawable(this, R.drawable.shape_arredondado));
+                //campos.get(i+1).setVisibility(View.GONE);
             }
 
         }
@@ -599,6 +602,7 @@ public class Exercicio extends AppCompatActivity {
     public void limparCampos(List<String> resposta) {
         for (int i = 0; i < campos.size(); i++) {
             //Limpar apenas os campos que não estejam bloqueados
+            //Alterar se for adiconar mais um caracter
             if (!resposta.get(i).equals("*")) {
                 campos.get(i).setFocusable(true);
                 campos.get(i).setFocusableInTouchMode(true);
@@ -707,14 +711,28 @@ public class Exercicio extends AppCompatActivity {
                 VerificarResposta(respostasAritmetico.getExercicio3());
             }
         } else if (tipoExercicio.equals("condicional")) {
-            VerificarResposta(respostasCondicionais.getExercicio1());
+            if (numeroExercicio.equals("1")) {
+                VerificarResposta(respostasCondicionais.getExercicio1());
+            } else if (numeroExercicio.equals("2")) {
+                VerificarResposta(respostasCondicionais.getExercicio2());
+            } else {
+                VerificarResposta(respostasCondicionais.getExercicio3());
+            }
         } else if (tipoExercicio.equals("repeticao")) {
-            VerificarResposta(respostasEstruturaDeRepeticao.getExercicio1());
-        } else {
+            if (numeroExercicio.equals("1")) {
+                VerificarResposta(respostasEstruturaDeRepeticao.getExercicio1());
+            } else if (numeroExercicio.equals("2")) {
+                VerificarResposta(respostasEstruturaDeRepeticao.getExercicio2());
+            } else {
+                VerificarResposta(respostasEstruturaDeRepeticao.getExercicio3());
+            }
+        } else if (tipoExercicio.equals("listas")) {
             if (numeroExercicio.equals("1")) {
                 VerificarResposta(respostasLista.getExercicio1());
-            }else{
+            } else if (numeroExercicio.equals("2")) {
                 VerificarResposta(respostasLista.getExercicio2());
+            } else {
+                VerificarResposta(respostasLista.getExercicio3());
             }
 
         }

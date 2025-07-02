@@ -31,4 +31,9 @@ public class RespostasCondicionais {
         return exercicio1;
     }
 
+    public List getExercicio2() {return exercicio1;
+    }
+
+    public List getExercicio3() {return exercicio1;
+    }
 }

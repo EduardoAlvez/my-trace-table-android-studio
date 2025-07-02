@@ -7,6 +7,8 @@ import java.util.List;
 
 public class RespostasAritmetico {
 
+
+    //usar um Hashmap
     private List<String> exercicio1 = new ArrayList();
     private List<String> exercicio2 = new ArrayList();
     private List<String> exercicio3 = new ArrayList();

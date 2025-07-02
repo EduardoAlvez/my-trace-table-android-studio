@@ -8,12 +8,12 @@ public class RespostasLista {
 
     private List<String> exercicio1 = new ArrayList();
 
-    public RespostasLista(){
+    public RespostasLista() {
         populaRespostas();
     }
 
     //POPULA AS RESPOSTAS. QUANDO TIVER UM "*" SIGNIFICA QUE A VARIÁVEL NÃO EXISTE NAQUELA POSIÇÃO
-    private void populaRespostas(){
+    private void populaRespostas() {
         exercicio1.addAll(Arrays.asList(
                 "0", "*", "*",
                 "0", "0", "*",
@@ -30,10 +30,14 @@ public class RespostasLista {
     public List getExercicio1() {
         return exercicio1;
     }
+
     public List getExercicio2() {
         return exercicio1;
     }
 
+    public List getExercicio3() {
+        return exercicio1;
+    }
 }
 
 
