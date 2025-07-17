@@ -695,38 +695,42 @@ public class Exercicio extends AppCompatActivity {
         );
 
 
-        if (tipoExercicio.equals("aritmetico")) {
-            if (numeroExercicio.equals("1")) {
-                VerificarResposta(respostasAritmetico.getExercicio1());
-            } else if (numeroExercicio.equals("2")) {
-                VerificarResposta(respostasAritmetico.getExercicio2());
-            } else {
-                VerificarResposta(respostasAritmetico.getExercicio3());
-            }
-        } else if (tipoExercicio.equals("condicional")) {
-            if (numeroExercicio.equals("1")) {
-                VerificarResposta(respostasCondicionais.getExercicio1());
-            } else if (numeroExercicio.equals("2")) {
-                VerificarResposta(respostasCondicionais.getExercicio2());
-            } else {
-                VerificarResposta(respostasCondicionais.getExercicio3());
-            }
-        } else if (tipoExercicio.equals("repeticao")) {
-            if (numeroExercicio.equals("1")) {
-                VerificarResposta(respostasEstruturaDeRepeticao.getExercicio1());
-            } else if (numeroExercicio.equals("2")) {
-                VerificarResposta(respostasEstruturaDeRepeticao.getExercicio2());
-            } else {
-                VerificarResposta(respostasEstruturaDeRepeticao.getExercicio3());
-            }
-        } else if (tipoExercicio.equals("listas")) {
-            if (numeroExercicio.equals("1")) {
-                VerificarResposta(respostasLista.getExercicio1());
-            } else if (numeroExercicio.equals("2")) {
-                VerificarResposta(respostasLista.getExercicio2());
-            } else {
-                VerificarResposta(respostasLista.getExercicio3());
-            }
+        switch (tipoExercicio) {
+            case "aritmetico":
+                if (numeroExercicio.equals("1")) {
+                    VerificarResposta(respostasAritmetico.getExercicio1());
+                } else if (numeroExercicio.equals("2")) {
+                    VerificarResposta(respostasAritmetico.getExercicio2());
+                } else {
+                    VerificarResposta(respostasAritmetico.getExercicio3());
+                }
+                break;
+            case "condicional":
+                if (numeroExercicio.equals("1")) {
+                    VerificarResposta(respostasCondicionais.getExercicio1());
+                } else if (numeroExercicio.equals("2")) {
+                    VerificarResposta(respostasCondicionais.getExercicio2());
+                } else {
+                    VerificarResposta(respostasCondicionais.getExercicio3());
+                }
+                break;
+            case "repeticao":
+                if (numeroExercicio.equals("1")) {
+                    VerificarResposta(respostasEstruturaDeRepeticao.getExercicio1());
+                } else if (numeroExercicio.equals("2")) {
+                    VerificarResposta(respostasEstruturaDeRepeticao.getExercicio2());
+                } else {
+                    VerificarResposta(respostasEstruturaDeRepeticao.getExercicio3());
+                }
+                break;
+            case "listas":
+                if (numeroExercicio.equals("1")) {
+                    VerificarResposta(respostasLista.getExercicio1());
+                } else if (numeroExercicio.equals("2")) {
+                    VerificarResposta(respostasLista.getExercicio2());
+                } else {
+                    VerificarResposta(respostasLista.getExercicio3());
+                }
 
         }
 
