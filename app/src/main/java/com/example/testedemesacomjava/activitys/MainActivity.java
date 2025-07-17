@@ -1,4 +1,4 @@
-package com.example.testedemesacomjava;
+package com.example.testedemesacomjava.activitys;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,20 +8,14 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
-import android.widget.Toolbar;
 
-import com.example.testedemesacomjava.ui.gallery.GalleryFragment;
-import com.example.testedemesacomjava.ui.gallery.GalleryViewModel;
-import com.example.testedemesacomjava.ui.home.HomeFragment;
-import com.example.testedemesacomjava.ui.slideshow.SlideshowFragment;
-import com.google.android.material.snackbar.Snackbar;
+import com.example.testedemesacomjava.R;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -95,7 +89,7 @@ private ActivityMainBinding binding;
         builder.setTitle("Fechar Aplicativo");
         builder.setMessage("Deseja realmente sair do aplicativo?");
         builder.setPositiveButton("Sim", (dialog, which) -> {
-            ((Activity) context).finishAffinity(); // Fecha o app
+            ((Activity) this).finishAffinity(); // Fecha o app
         });
         builder.setNegativeButton("Não", (dialog, which) -> dialog.dismiss());
 
