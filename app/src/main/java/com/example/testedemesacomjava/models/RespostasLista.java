@@ -7,7 +7,7 @@ import java.util.List;
 public class RespostasLista {
 
     private List<String> exercicio1 = new ArrayList();
-
+    private List<String> exercicio2 = new ArrayList();
     public RespostasLista() {
         populaRespostas();
     }
@@ -25,17 +25,29 @@ public class RespostasLista {
                 "*", "*", "*",
                 "*", "*", "*",
                 "*", "*", "*"));
+        exercicio2.addAll(Arrays.asList(
+                "*", "*", "*",
+                "18", "*", "*",
+                "18", "6", "*",
+                "18", "6", "2",
+                "*", "*", "*",
+                "*", "*", "*",
+                "*", "*", "*",
+                "*", "*", "*",
+                "*", "*", "*",
+                "*", "*", "*"
+        ));
     }
 
-    public List getExercicio1() {
+    public List<String> getExercicio1() {
         return exercicio1;
     }
 
-    public List getExercicio2() {
+    public List<String> getExercicio2() {
         return exercicio1;
     }
 
-    public List getExercicio3() {
+    public List<String> getExercicio3() {
         return exercicio1;
     }
 }

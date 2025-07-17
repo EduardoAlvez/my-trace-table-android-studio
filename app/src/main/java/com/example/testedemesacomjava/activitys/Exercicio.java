@@ -732,6 +732,7 @@ public class Exercicio extends AppCompatActivity {
                     VerificarResposta(respostasLista.getExercicio3());
                 }
 
+                break;
         }
 
 

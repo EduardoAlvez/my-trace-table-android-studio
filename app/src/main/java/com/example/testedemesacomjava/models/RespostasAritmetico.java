@@ -54,15 +54,15 @@ public class RespostasAritmetico {
               "*", "*", "*"));
     }
 
-    public List getExercicio1() {
+    public List<String> getExercicio1() {
         return exercicio1;
     }
 
-    public List getExercicio2() {
+    public List<String> getExercicio2() {
         return exercicio2;
     }
 
-    public List getExercicio3() {
+    public List<String> getExercicio3() {
         return exercicio3;
     }
 }

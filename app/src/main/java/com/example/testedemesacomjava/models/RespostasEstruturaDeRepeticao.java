@@ -27,7 +27,7 @@ public class RespostasEstruturaDeRepeticao {
                 "*", "*", "*"));
     }
 
-    public List getExercicio1() {
+    public List<String> getExercicio1() {
         return exercicio1;
     }
 
