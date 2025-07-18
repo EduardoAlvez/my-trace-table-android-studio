@@ -44,7 +44,7 @@ public class RespostasLista {
     }
 
     public List<String> getExercicio2() {
-        return exercicio1;
+        return exercicio2;
     }
 
     public List<String> getExercicio3() {

@@ -38,6 +38,7 @@ import androidx.core.view.WindowInsetsCompat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import android.content.Intent;
 
@@ -200,9 +201,9 @@ public class Exercicio extends AppCompatActivity {
                 @Override
                 public void afterTextChanged(Editable s) {
                     // Pode ser deixado vazio se não precisar fazer nada após a mudança do texto
-                    if (tentandoNovamente) {
-                        VerificaResposta(true);
-                    }
+//                    if (tentandoNovamente) {
+//                        VerificaResposta(true);
+//                    }
                 }
             });
         }
@@ -213,14 +214,14 @@ public class Exercicio extends AppCompatActivity {
         buttonTentarDenovo.setOnClickListener(v -> {
 
 
-            buttonVerificarRestposta.setClickable(true);
-            buttonVerificarRestposta.setVisibility(View.VISIBLE);
+                    buttonVerificarRestposta.setClickable(true);
+                    buttonVerificarRestposta.setVisibility(View.VISIBLE);
 
-            buttonRetornarMenuExercicio.setVisibility(View.INVISIBLE);
-            buttonRetornarMenuExercicio.setClickable(false);
+                    buttonRetornarMenuExercicio.setVisibility(View.INVISIBLE);
+                    buttonRetornarMenuExercicio.setClickable(false);
 
-            buttonTentarDenovo.setVisibility(View.INVISIBLE);
-            buttonTentarDenovo.setClickable(false);
+                    buttonTentarDenovo.setVisibility(View.INVISIBLE);
+                    buttonTentarDenovo.setClickable(false);
 
             if(acertouTudo==true){
                 //LIMPA TODOS OS CAMPOS
@@ -239,13 +240,31 @@ public class Exercicio extends AppCompatActivity {
                 } else {
                     limparCampos(respostasLista.getExercicio1());
                 }
-            }else{
+            } else{
                 //LIBERA OS CAMPOS PARA EDIÇÃO AO INVÉS DE LIMPÁ-LOS
-                for (int i = 0; i < campos.size(); i++) {
-                    //Limpar apenas os campos que não estejam bloqueados
-                    if (!campos.get(i).equals("*")) {
-                        campos.get(i).setFocusable(true);
-                        campos.get(i).setFocusableInTouchMode(true);
+                if (tipoExercicio.equals("aritmetico")) {
+                    if (numeroExercicio.equals("1")) {
+                        liberarCamposEdicao(respostasAritmetico.getExercicio1());
+                    } else if (numeroExercicio.equals("2")) {
+                        liberarCamposEdicao(respostasAritmetico.getExercicio2());
+                    } else {
+                        liberarCamposEdicao(respostasAritmetico.getExercicio3());
+                    }
+                } else if (tipoExercicio.equals("condicional")) {
+                    if (numeroExercicio.equals("1")) {
+                        liberarCamposEdicao(respostasCondicionais.getExercicio1());
+                    } else if (numeroExercicio.equals("2")) {
+                        liberarCamposEdicao(respostasCondicionais.getExercicio2());
+                    } else {
+                        liberarCamposEdicao(respostasCondicionais.getExercicio3());
+                    }
+                } else if (tipoExercicio.equals("repeticao")) {
+                    liberarCamposEdicao(respostasEstruturaDeRepeticao.getExercicio1());
+                } else if (tipoExercicio.equals("listas")) {
+                    if (numeroExercicio.equals("1")) {
+                        liberarCamposEdicao(respostasLista.getExercicio1());
+                    } else {
+                        liberarCamposEdicao(respostasLista.getExercicio2());
                     }
                 }
             }
@@ -331,177 +350,96 @@ public class Exercicio extends AppCompatActivity {
                 bloqueaCampos(respostasAritmetico.getExercicio1());
                 limparCampos(respostasAritmetico.getExercicio1());
                 //Integer.parseInt(numeroExercicio);
-                // deixar mais limpo, muita repetição
-                //ocultando a linha 6
-                legendaLinha6.setVisibility(View.INVISIBLE);
-                campo16.setVisibility(View.INVISIBLE);
-                campo17.setVisibility(View.INVISIBLE);
-                campo18.setVisibility(View.INVISIBLE);
-                //ocultando a linha 7
-                legendaLinha7.setVisibility(View.INVISIBLE);
-                campo19.setVisibility(View.INVISIBLE);
-                campo20.setVisibility(View.INVISIBLE);
-                campo21.setVisibility(View.INVISIBLE);
-                //ocultando a linha 8
-                legendaLinha8.setVisibility(View.INVISIBLE);
-                campo22.setVisibility(View.INVISIBLE);
-                campo23.setVisibility(View.INVISIBLE);
-                campo24.setVisibility(View.INVISIBLE);
-                //ocultando a linha 9
-                legendaLinha9.setVisibility(View.INVISIBLE);
-                campo25.setVisibility(View.INVISIBLE);
-                campo26.setVisibility(View.INVISIBLE);
-                campo27.setVisibility(View.INVISIBLE);
-                //ocultando a linha 10
-                legendaLinha10.setVisibility(View.INVISIBLE);
-                campo28.setVisibility(View.INVISIBLE);
-                campo29.setVisibility(View.INVISIBLE);
-                campo30.setVisibility(View.INVISIBLE);
+
+                //DEIXANDO OCULTO OS CAMPOS QUE NÃO SERÃO USADOS
+                setViewsVisibility(View.INVISIBLE, legendaLinha6 , legendaLinha7, legendaLinha8, legendaLinha9, legendaLinha10);
+                setViewsVisibility(View.INVISIBLE,
+                        campo16, campo17, campo18, campo19, campo20, campo21, campo22, campo23,
+                        campo24, campo25, campo26, campo27, campo28, campo29, campo30);
 
             } else if (numeroExercicio.equals("2")) {
                 imagemExercicio.setImageResource(R.drawable.aritmetico_exercicio2);
                 bloqueaCampos(respostasAritmetico.getExercicio2());
                 limparCampos(respostasAritmetico.getExercicio2());
-                //ocultando a linha 6
-                legendaLinha6.setVisibility(View.INVISIBLE);
-                campo16.setVisibility(View.INVISIBLE);
-                campo17.setVisibility(View.INVISIBLE);
-                campo18.setVisibility(View.INVISIBLE);
-                //ocultando a linha 7
-                legendaLinha7.setVisibility(View.INVISIBLE);
-                campo19.setVisibility(View.INVISIBLE);
-                campo20.setVisibility(View.INVISIBLE);
-                campo21.setVisibility(View.INVISIBLE);
-                //ocultando a linha 8
-                legendaLinha8.setVisibility(View.INVISIBLE);
-                campo22.setVisibility(View.INVISIBLE);
-                campo23.setVisibility(View.INVISIBLE);
-                campo24.setVisibility(View.INVISIBLE);
-                //ocultando a linha 9
-                legendaLinha9.setVisibility(View.INVISIBLE);
-                campo25.setVisibility(View.INVISIBLE);
-                campo26.setVisibility(View.INVISIBLE);
-                campo27.setVisibility(View.INVISIBLE);
-                //ocultando a linha 10
-                legendaLinha10.setVisibility(View.INVISIBLE);
-                campo28.setVisibility(View.INVISIBLE);
-                campo29.setVisibility(View.INVISIBLE);
-                campo30.setVisibility(View.INVISIBLE);
+
+                //DEIXANDO OCULTO OS CAMPOS QUE NÃO SERÃO USADOS
+                setViewsVisibility(View.INVISIBLE, legendaLinha6 , legendaLinha7, legendaLinha8, legendaLinha9, legendaLinha10);
+                setViewsVisibility(View.INVISIBLE,
+                        campo16, campo17, campo18, campo19, campo20, campo21, campo22, campo23,
+                        campo24, campo25, campo26, campo27, campo28, campo29, campo30);
+
             } else {
                 imagemExercicio.setImageResource(R.drawable.aritmetico_exercicio3);
                 bloqueaCampos(respostasAritmetico.getExercicio3());
                 limparCampos(respostasAritmetico.getExercicio3());
-                //ocultando a linha 6
-                legendaLinha6.setVisibility(View.INVISIBLE);
-                campo16.setVisibility(View.INVISIBLE);
-                campo17.setVisibility(View.INVISIBLE);
-                campo18.setVisibility(View.INVISIBLE);
-                //ocultando a linha 7
-                legendaLinha7.setVisibility(View.INVISIBLE);
-                campo19.setVisibility(View.INVISIBLE);
-                campo20.setVisibility(View.INVISIBLE);
-                campo21.setVisibility(View.INVISIBLE);
-                //ocultando a linha 8
-                legendaLinha8.setVisibility(View.INVISIBLE);
-                campo22.setVisibility(View.INVISIBLE);
-                campo23.setVisibility(View.INVISIBLE);
-                campo24.setVisibility(View.INVISIBLE);
-                //ocultando a linha 9
-                legendaLinha9.setVisibility(View.INVISIBLE);
-                campo25.setVisibility(View.INVISIBLE);
-                campo26.setVisibility(View.INVISIBLE);
-                campo27.setVisibility(View.INVISIBLE);
-                //ocultando a linha 10
-                legendaLinha10.setVisibility(View.INVISIBLE);
-                campo28.setVisibility(View.INVISIBLE);
-                campo29.setVisibility(View.INVISIBLE);
-                campo30.setVisibility(View.INVISIBLE);
+
+                //DEIXANDO OCULTO OS CAMPOS QUE NÃO SERÃO USADOS
+                setViewsVisibility(View.INVISIBLE, legendaLinha6 , legendaLinha7, legendaLinha8, legendaLinha9, legendaLinha10);
+                setViewsVisibility(View.INVISIBLE,
+                         campo16, campo17, campo18, campo19, campo20, campo21, campo22, campo23,
+                        campo24, campo25, campo26, campo27, campo28, campo29, campo30);
+
             }
         } else if (tipoExercicio.equals("condicional")) {
             //DEIXANDO OCULTO OS CAMPOS QUE NÃO SERÃO USADOS
-
-            //ocultando a linha 3
-            legendaLinha3.setVisibility(View.GONE);
-            campo7.setVisibility(View.GONE);
-            campo8.setVisibility(View.GONE);
-            campo9.setVisibility(View.GONE);
-            //ocultando a linha 8
-            legendaLinha8.setVisibility(View.INVISIBLE);
-            campo22.setVisibility(View.INVISIBLE);
-            campo23.setVisibility(View.INVISIBLE);
-            campo24.setVisibility(View.INVISIBLE);
-            //ocultando a linha 9
-            legendaLinha9.setVisibility(View.INVISIBLE);
-            campo25.setVisibility(View.INVISIBLE);
-            campo26.setVisibility(View.INVISIBLE);
-            campo27.setVisibility(View.INVISIBLE);
-            //ocultando a linha 10
-            legendaLinha10.setVisibility(View.INVISIBLE);
-            campo28.setVisibility(View.INVISIBLE);
-            campo29.setVisibility(View.INVISIBLE);
-            campo30.setVisibility(View.INVISIBLE);
+            //DEIXANDO OCULTO OS CAMPOS QUE NÃO SERÃO USADOS
+            setViewsVisibility(View.INVISIBLE, legendaLinha3, legendaLinha8, legendaLinha9, legendaLinha10);
+            setViewsVisibility(View.INVISIBLE,
+                    campo7, campo8, campo9 , campo22, campo23, campo24,
+                    campo25, campo26, campo27, campo28, campo29, campo30);
 
             imagemExercicio.setImageResource(R.drawable.condicional_exercicio1);
             bloqueaCampos(respostasCondicionais.getExercicio1());
             limparCampos(respostasCondicionais.getExercicio1());
+
         } else if (tipoExercicio.equals("repeticao")) {
             //DEIXANDO OCULTO OS CAMPOS QUE NÃO SERÃO USADOS
-            //ocultando a linha 8
-            legendaLinha8.setVisibility(View.INVISIBLE);
-            campo22.setVisibility(View.INVISIBLE);
-            campo23.setVisibility(View.INVISIBLE);
-            campo24.setVisibility(View.INVISIBLE);
-            //ocultando a linha 9
-            legendaLinha9.setVisibility(View.INVISIBLE);
-            campo25.setVisibility(View.INVISIBLE);
-            campo26.setVisibility(View.INVISIBLE);
-            campo27.setVisibility(View.INVISIBLE);
-            //ocultando a linha 10
-            legendaLinha10.setVisibility(View.INVISIBLE);
-            campo28.setVisibility(View.INVISIBLE);
-            campo29.setVisibility(View.INVISIBLE);
-            campo30.setVisibility(View.INVISIBLE);
+            //DEIXANDO OCULTO OS CAMPOS QUE NÃO SERÃO USADOS
+            setViewsVisibility(View.INVISIBLE, legendaLinha8, legendaLinha9, legendaLinha10);
+            setViewsVisibility(View.INVISIBLE,
+                    campo22, campo23, campo24, campo25, campo26, campo27, campo28, campo29, campo30);
 
             imagemExercicio.setImageResource(R.drawable.estrutura_de_repeticao_exercicio1);
             bloqueaCampos(respostasEstruturaDeRepeticao.getExercicio1());
             limparCampos(respostasEstruturaDeRepeticao.getExercicio1());
+
         } else {
-            //DEIXANDO OCULTO OS CAMPOS QUE NÃO SERÃO USADOS
-            //ocultando a linha 7
-            legendaLinha7.setVisibility(View.INVISIBLE);
-            campo19.setVisibility(View.INVISIBLE);
-            campo20.setVisibility(View.INVISIBLE);
-            campo21.setVisibility(View.INVISIBLE);
-            //ocultando a linha 8
-            legendaLinha8.setVisibility(View.INVISIBLE);
-            campo22.setVisibility(View.INVISIBLE);
-            campo23.setVisibility(View.INVISIBLE);
-            campo24.setVisibility(View.INVISIBLE);
-            //ocultando a linha 9
-            legendaLinha9.setVisibility(View.INVISIBLE);
-            campo25.setVisibility(View.INVISIBLE);
-            campo26.setVisibility(View.INVISIBLE);
-            campo27.setVisibility(View.INVISIBLE);
-            //ocultando a linha 10
-            legendaLinha10.setVisibility(View.INVISIBLE);
-            campo28.setVisibility(View.INVISIBLE);
-            campo29.setVisibility(View.INVISIBLE);
-            campo30.setVisibility(View.INVISIBLE);
+            if (numeroExercicio.equals("1")){
+                imagemExercicio.setImageResource(R.drawable.lista_exercicio1);
+                bloqueaCampos(respostasLista.getExercicio1());
+                limparCampos(respostasLista.getExercicio1());
 
-            legendaLinha1.setText("2");
-            legendaLinha2.setText("3");
-            legendaLinha3.setText("4");
-            legendaLinha4.setText("3");
-            legendaLinha5.setText("4");
-            legendaLinha6.setText("5");
+                //DEIXANDO OCULTO OS CAMPOS QUE NÃO SERÃO USADOS
+                setViewsVisibility(View.GONE, legendaLinha7, legendaLinha8, legendaLinha9, legendaLinha10);
+                setViewsVisibility(View.GONE,
+                        campo19, campo20, campo21, campo22, campo23, campo24,
+                        campo25, campo26, campo27, campo28, campo29, campo30);
 
+                legendaLinha1.setText("2");
+                legendaLinha2.setText("3");
+                legendaLinha3.setText("4");
+                legendaLinha4.setText("3");
+                legendaLinha5.setText("4");
+                legendaLinha6.setText("5");
+            }else if (numeroExercicio.equals("2")){
+                imagemExercicio.setImageResource(R.drawable.lista_exercicio2);
+                bloqueaCampos(respostasLista.getExercicio2());
+                limparCampos(respostasLista.getExercicio2());
 
-            imagemExercicio.setImageResource(R.drawable.lista_exercicio1);
-            bloqueaCampos(respostasLista.getExercicio1());
-            limparCampos(respostasLista.getExercicio1());
+                //DEIXANDO OCULTO OS CAMPOS QUE NÃO SERÃO USADOS
+                setViewsVisibility(View.GONE, legendaLinha5 , legendaLinha6 , legendaLinha7, legendaLinha8, legendaLinha9, legendaLinha10);
+                setViewsVisibility(View.GONE,
+                        campo13, campo14, campo15 ,campo16, campo17, campo18, campo19, campo20, campo21,
+                        campo22, campo23, campo24, campo25, campo26, campo27, campo28, campo29, campo30);
+
+            }
         }
 
 
+    }
+
+    private void setViewsVisibility(int visibility, View... views) {
+        Stream.of(views).forEach(view -> view.setVisibility(visibility));
     }
 
     @Override
@@ -593,6 +531,7 @@ public class Exercicio extends AppCompatActivity {
     }
 
     public void limparCampos(List<String> resposta) {
+        System.out.println("reposta:" + resposta);
         for (int i = 0; i < campos.size(); i++) {
             //Limpar apenas os campos que não estejam bloqueados
             //Alterar se for adiconar mais um caracter
@@ -606,42 +545,29 @@ public class Exercicio extends AppCompatActivity {
         }
     }
 
+    public void liberarCamposEdicao(List<String> resposta) {
+        for (int i = 0; i < campos.size(); i++) {
+            EditText campo = campos.get(i);
+            //Liberar apenas os campos que não estejam bloqueados e não foram acertados
+            if (!resposta.get(i).equals("*") && !campo.getText().toString().trim().equals(resposta.get(i))) {
+                campo.setFocusable(true);
+                campo.setFocusableInTouchMode(true);
+                campo.setBackground(ContextCompat.getDrawable(this, R.drawable.shape_arredondado_branco)); // Restaura a cor de fundo original
+                campo.setTextColor(Color.BLACK); // Restaura a cor do texto original
+            }
+        }
+    }
     public boolean isAcertouTudo() {
         return acertouTudo;
     }
 
     public void getResposta() {
-        respostaUsuario.add(0, campo1.getText().toString());
-        respostaUsuario.add(1, campo2.getText().toString());
-        respostaUsuario.add(2, campo3.getText().toString());
-        respostaUsuario.add(3, campo4.getText().toString());
-        respostaUsuario.add(4, campo5.getText().toString());
-        respostaUsuario.add(5, campo6.getText().toString());
-        respostaUsuario.add(6, campo7.getText().toString());
-        respostaUsuario.add(7, campo8.getText().toString());
-        respostaUsuario.add(8, campo9.getText().toString());
-        respostaUsuario.add(9, campo10.getText().toString());
-        respostaUsuario.add(10, campo11.getText().toString());
-        respostaUsuario.add(11, campo12.getText().toString());
-        respostaUsuario.add(12, campo13.getText().toString());
-        respostaUsuario.add(13, campo14.getText().toString());
-        respostaUsuario.add(14, campo15.getText().toString());
-        respostaUsuario.add(15, campo16.getText().toString());
-        respostaUsuario.add(16, campo17.getText().toString());
-        respostaUsuario.add(17, campo18.getText().toString());
-        respostaUsuario.add(18, campo19.getText().toString());
-        respostaUsuario.add(19, campo20.getText().toString());
-        respostaUsuario.add(20, campo21.getText().toString());
-        respostaUsuario.add(21, campo22.getText().toString());
-        respostaUsuario.add(22, campo23.getText().toString());
-        respostaUsuario.add(23, campo24.getText().toString());
-        respostaUsuario.add(24, campo25.getText().toString());
-        respostaUsuario.add(25, campo26.getText().toString());
-        respostaUsuario.add(26, campo27.getText().toString());
-        respostaUsuario.add(27, campo28.getText().toString());
-        respostaUsuario.add(28, campo29.getText().toString());
-        respostaUsuario.add(29, campo30.getText().toString());
+        // Limpa a lista antes de adicionar novas respostas
+        respostaUsuario.clear();
 
+        for (EditText campo : campos) {
+            respostaUsuario.add(campo.getText().toString());
+        }
     }
 
 

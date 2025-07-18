@@ -63,15 +63,19 @@ public class ListaExercicio extends AppCompatActivity {
         buttonExercicio3 = findViewById(R.id.button_exercicio3);
 
         //APENAS O TIPO DE EXERCÍCIO DE OPERADORES ARITMÉTICOS POSSUI 3 EXERCÍCIOS
-        //procurar uma forma de tentar deixar dinamico
-
-
-        if(!tipoExercicio.equals("aritmetico")){
-            buttonExercicio2.setVisibility(View.INVISIBLE);
-            buttonExercicio3.setVisibility(View.INVISIBLE);
-        }else{
-            buttonExercicio2.setVisibility(View.VISIBLE);
-            buttonExercicio3.setVisibility(View.VISIBLE);
+        switch (tipoExercicio) {
+            case "aritmetico":
+                buttonExercicio2.setVisibility(View.VISIBLE);
+                buttonExercicio3.setVisibility(View.VISIBLE);
+                break;
+            case "listas":
+                buttonExercicio2.setVisibility(View.VISIBLE);
+                buttonExercicio3.setVisibility(View.INVISIBLE);
+                break;
+            default:
+                buttonExercicio2.setVisibility(View.INVISIBLE);
+                buttonExercicio3.setVisibility(View.INVISIBLE);
+                break;
         }
         DefineTituloDoMenu();
 
