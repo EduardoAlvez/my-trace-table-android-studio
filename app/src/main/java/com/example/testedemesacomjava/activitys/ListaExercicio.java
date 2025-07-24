@@ -64,7 +64,9 @@ public class ListaExercicio extends AppCompatActivity {
 
         //APENAS O TIPO DE EXERCÍCIO DE OPERADORES ARITMÉTICOS POSSUI 3 EXERCÍCIOS
         switch (tipoExercicio) {
+            case "condicional":
             case "aritmetico":
+            case "repeticao":
                 buttonExercicio2.setVisibility(View.VISIBLE);
                 buttonExercicio3.setVisibility(View.VISIBLE);
                 break;

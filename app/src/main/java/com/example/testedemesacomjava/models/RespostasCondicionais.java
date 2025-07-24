@@ -6,7 +6,10 @@ import java.util.List;
 
 public class RespostasCondicionais {
 
-    private List<String> exercicio1 = new ArrayList();
+    private List<String> exercicio1 = new ArrayList<>();
+    private List<String> exercicio2 = new ArrayList<>();
+    private List<String> exercicio3 = new ArrayList<>();
+
 
     public RespostasCondicionais(){
         populaRespostas();
@@ -25,13 +28,27 @@ public class RespostasCondicionais {
                 "*", "*", "*",
                 "*", "*", "*",
                 "*", "*", "*"));
+
+        exercicio2.addAll(Arrays.asList(
+                "1", "550", "0",
+                "1", "550", "0",
+                "1", "550", "50",
+                "1", "550", "50",
+                "1", "275", "50",
+                "*", "*", "*",
+                "*", "*", "*",
+                "*", "*", "*",
+                "*", "*", "*",
+                "*", "*", "*"));
     }
 
     public List<String> getExercicio1() {
         return exercicio1;
     }
-    public List<String> getExercicio2() {return exercicio1;
+    public List<String> getExercicio2() {
+        return exercicio2;
     }
-    public List<String> getExercicio3() {return exercicio1;
+    public List<String> getExercicio3() {
+        return exercicio3;
     }
 }

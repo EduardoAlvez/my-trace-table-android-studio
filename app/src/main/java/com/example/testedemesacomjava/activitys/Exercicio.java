@@ -201,9 +201,9 @@ public class Exercicio extends AppCompatActivity {
                 @Override
                 public void afterTextChanged(Editable s) {
                     // Pode ser deixado vazio se não precisar fazer nada após a mudança do texto
-//                    if (tentandoNovamente) {
+                    if (tentandoNovamente) {
 //                        VerificaResposta(true);
-//                    }
+                    }
                 }
             });
         }
@@ -223,7 +223,7 @@ public class Exercicio extends AppCompatActivity {
                     buttonTentarDenovo.setVisibility(View.INVISIBLE);
                     buttonTentarDenovo.setClickable(false);
 
-            if(acertouTudo==true){
+            if(acertouTudo){
                 //LIMPA TODOS OS CAMPOS
                 if (tipoExercicio.equals("aritmetico")) {
                     if (numeroExercicio.equals("1")) {
@@ -234,38 +234,61 @@ public class Exercicio extends AppCompatActivity {
                         limparCampos(respostasAritmetico.getExercicio3());
                     }
                 } else if (tipoExercicio.equals("condicional")) {
-                    limparCampos(respostasCondicionais.getExercicio1());
+                    if (numeroExercicio.equals("1")) {
+                        limparCampos(respostasCondicionais.getExercicio1());
+                    } else if (numeroExercicio.equals("2")) {
+                        limparCampos(respostasCondicionais.getExercicio2());
+                    } else {
+                        limparCampos(respostasCondicionais.getExercicio3());
+                    }
                 } else if (tipoExercicio.equals("repeticao")) {
-                    limparCampos(respostasEstruturaDeRepeticao.getExercicio1());
-                } else {
-                    limparCampos(respostasLista.getExercicio1());
+                    if (numeroExercicio.equals("1")) {
+                        limparCampos(respostasEstruturaDeRepeticao.getExercicio1());
+                    } else if (numeroExercicio.equals("2")) {
+                        limparCampos(respostasEstruturaDeRepeticao.getExercicio2());
+                    } else {
+                        limparCampos(respostasEstruturaDeRepeticao.getExercicio3());
+                    }
                 }
             } else{
                 //LIBERA OS CAMPOS PARA EDIÇÃO AO INVÉS DE LIMPÁ-LOS
-                if (tipoExercicio.equals("aritmetico")) {
-                    if (numeroExercicio.equals("1")) {
-                        liberarCamposEdicao(respostasAritmetico.getExercicio1());
-                    } else if (numeroExercicio.equals("2")) {
-                        liberarCamposEdicao(respostasAritmetico.getExercicio2());
-                    } else {
-                        liberarCamposEdicao(respostasAritmetico.getExercicio3());
-                    }
-                } else if (tipoExercicio.equals("condicional")) {
-                    if (numeroExercicio.equals("1")) {
-                        liberarCamposEdicao(respostasCondicionais.getExercicio1());
-                    } else if (numeroExercicio.equals("2")) {
-                        liberarCamposEdicao(respostasCondicionais.getExercicio2());
-                    } else {
-                        liberarCamposEdicao(respostasCondicionais.getExercicio3());
-                    }
-                } else if (tipoExercicio.equals("repeticao")) {
-                    liberarCamposEdicao(respostasEstruturaDeRepeticao.getExercicio1());
-                } else if (tipoExercicio.equals("listas")) {
-                    if (numeroExercicio.equals("1")) {
-                        liberarCamposEdicao(respostasLista.getExercicio1());
-                    } else {
-                        liberarCamposEdicao(respostasLista.getExercicio2());
-                    }
+                switch (tipoExercicio) {
+                    case "aritmetico":
+                        if (numeroExercicio.equals("1")) {
+                            liberarCamposEdicao(respostasAritmetico.getExercicio1());
+                        } else if (numeroExercicio.equals("2")) {
+                            liberarCamposEdicao(respostasAritmetico.getExercicio2());
+                        } else {
+                            liberarCamposEdicao(respostasAritmetico.getExercicio3());
+                        }
+                        break;
+                    case "condicional":
+                        if (numeroExercicio.equals("1")) {
+                            liberarCamposEdicao(respostasCondicionais.getExercicio1());
+                        } else if (numeroExercicio.equals("2")) {
+                            liberarCamposEdicao(respostasCondicionais.getExercicio2());
+                        } else {
+                            liberarCamposEdicao(respostasCondicionais.getExercicio3());
+                        }
+                        break;
+                    case "repeticao":
+                        if (numeroExercicio.equals("1")) {
+                            liberarCamposEdicao(respostasEstruturaDeRepeticao.getExercicio1());
+                        } else if (numeroExercicio.equals("2")) {
+                            liberarCamposEdicao(respostasEstruturaDeRepeticao.getExercicio2());
+                        } else {
+                            liberarCamposEdicao(respostasEstruturaDeRepeticao.getExercicio3());
+                        }
+                        break;
+                    case "listas":
+                        if (numeroExercicio.equals("1")) {
+                            liberarCamposEdicao(respostasLista.getExercicio1());
+                        } else if (numeroExercicio.equals("2")) {
+                            liberarCamposEdicao(respostasLista.getExercicio2());
+                        } else {
+                            liberarCamposEdicao(respostasLista.getExercicio3());
+                        }
+                        break;
                 }
             }
 
@@ -381,27 +404,98 @@ public class Exercicio extends AppCompatActivity {
 
             }
         } else if (tipoExercicio.equals("condicional")) {
-            //DEIXANDO OCULTO OS CAMPOS QUE NÃO SERÃO USADOS
-            //DEIXANDO OCULTO OS CAMPOS QUE NÃO SERÃO USADOS
-            setViewsVisibility(View.INVISIBLE, legendaLinha3, legendaLinha8, legendaLinha9, legendaLinha10);
-            setViewsVisibility(View.INVISIBLE,
-                    campo7, campo8, campo9 , campo22, campo23, campo24,
-                    campo25, campo26, campo27, campo28, campo29, campo30);
+            if (numeroExercicio.equals("1")) {
+                //DEIXANDO OCULTO OS CAMPOS QUE NÃO SERÃO USADOS
+                setViewsVisibility(View.INVISIBLE, legendaLinha3, legendaLinha8, legendaLinha9, legendaLinha10);
+                setViewsVisibility(View.INVISIBLE,
+                        campo7, campo8, campo9 ,
+                        campo22, campo23, campo24,
+                        campo25, campo26, campo27,
+                        campo28, campo29, campo30);
 
-            imagemExercicio.setImageResource(R.drawable.condicional_exercicio1);
-            bloqueaCampos(respostasCondicionais.getExercicio1());
-            limparCampos(respostasCondicionais.getExercicio1());
+                imagemExercicio.setImageResource(R.drawable.condicional_exercicio1);
+                bloqueaCampos(respostasCondicionais.getExercicio1());
+                limparCampos(respostasCondicionais.getExercicio1());
+            } else if (numeroExercicio.equals("2")){
+                //DEIXANDO OCULTO OS CAMPOS QUE NÃO SERÃO USADOS
+                setViewsVisibility(View.INVISIBLE, legendaLinha6 , legendaLinha7, legendaLinha8, legendaLinha9, legendaLinha10);
+                setViewsVisibility(View.INVISIBLE,
+                        campo16, campo17, campo18,
+                        campo19, campo20, campo21,
+                        campo22, campo23, campo24,
+                        campo25, campo26, campo27,
+                        campo28, campo29, campo30);
+
+                imagemExercicio.setImageResource(R.drawable.condicional_exercicio2);
+                bloqueaCampos(respostasCondicionais.getExercicio2());
+                limparCampos(respostasCondicionais.getExercicio2());
+            } else {
+                //DEIXANDO OCULTO OS CAMPOS QUE NÃO SERÃO USADOS
+                setViewsVisibility(View.INVISIBLE, legendaLinha6 , legendaLinha7, legendaLinha8, legendaLinha9, legendaLinha10);
+                setViewsVisibility(View.INVISIBLE,
+                        campo16, campo17, campo18,
+                        campo19, campo20, campo21,
+                        campo22, campo23, campo24,
+                        campo25, campo26, campo27,
+                        campo28, campo29, campo30);
+
+                imagemExercicio.setImageResource(R.drawable.condicional_exercicio1);
+                bloqueaCampos(respostasCondicionais.getExercicio3());
+                limparCampos(respostasCondicionais.getExercicio3());
+            }
 
         } else if (tipoExercicio.equals("repeticao")) {
-            //DEIXANDO OCULTO OS CAMPOS QUE NÃO SERÃO USADOS
-            //DEIXANDO OCULTO OS CAMPOS QUE NÃO SERÃO USADOS
-            setViewsVisibility(View.INVISIBLE, legendaLinha8, legendaLinha9, legendaLinha10);
-            setViewsVisibility(View.INVISIBLE,
-                    campo22, campo23, campo24, campo25, campo26, campo27, campo28, campo29, campo30);
+            if (numeroExercicio.equals("1")) {
+                //DEIXANDO OCULTO OS CAMPOS QUE NÃO SERÃO USADOS
+                setViewsVisibility(View.INVISIBLE, legendaLinha8, legendaLinha9, legendaLinha10);
+                setViewsVisibility(View.INVISIBLE,
+                        campo22, campo23, campo24,
+                        campo25, campo26, campo27,
+                        campo28, campo29, campo30);
 
-            imagemExercicio.setImageResource(R.drawable.estrutura_de_repeticao_exercicio1);
-            bloqueaCampos(respostasEstruturaDeRepeticao.getExercicio1());
-            limparCampos(respostasEstruturaDeRepeticao.getExercicio1());
+                imagemExercicio.setImageResource(R.drawable.estrutura_de_repeticao_exercicio1);
+                bloqueaCampos(respostasEstruturaDeRepeticao.getExercicio1());
+                limparCampos(respostasEstruturaDeRepeticao.getExercicio1());
+
+            } else if (numeroExercicio.equals("2")){
+                //DEIXANDO OCULTO OS CAMPOS QUE NÃO SERÃO USADOS
+                setViewsVisibility(View.INVISIBLE, legendaLinha8, legendaLinha9, legendaLinha10);
+                setViewsVisibility(View.INVISIBLE,
+                        campo22, campo23, campo24,
+                        campo25, campo26, campo27,
+                        campo28, campo29, campo30);
+
+                imagemExercicio.setImageResource(R.drawable.estrutura_de_repeticao_exercicio2);
+                bloqueaCampos(respostasEstruturaDeRepeticao.getExercicio2());
+                limparCampos(respostasEstruturaDeRepeticao.getExercicio2());
+
+                legendaLinha2.setText("4");
+                legendaLinha3.setText("5");
+                legendaLinha4.setText("6");
+                legendaLinha5.setText("4");
+                legendaLinha6.setText("5");
+                legendaLinha7.setText("6");
+
+            } else {
+                //DEIXANDO OCULTO OS CAMPOS QUE NÃO SERÃO USADOS
+                setViewsVisibility(View.INVISIBLE, legendaLinha8, legendaLinha9, legendaLinha10);
+                setViewsVisibility(View.INVISIBLE,
+                        campo22, campo23, campo24,
+                        campo25, campo26, campo27,
+                        campo28, campo29, campo30);
+
+                imagemExercicio.setImageResource(R.drawable.estrutura_de_repeticao_exercicio3);
+                bloqueaCampos(respostasEstruturaDeRepeticao.getExercicio3());
+                limparCampos(respostasEstruturaDeRepeticao.getExercicio3());
+
+                legendaLinha2.setText("3");
+                legendaLinha3.setText("5");
+                legendaLinha4.setText("6");
+                legendaLinha5.setText("3");
+                legendaLinha6.setText("5");
+                legendaLinha7.setText("6");
+
+            }
 
         } else {
             if (numeroExercicio.equals("1")){
