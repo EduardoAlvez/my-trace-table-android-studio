@@ -8,6 +8,8 @@ public class RespostasLista {
 
     private List<String> exercicio1 = new ArrayList();
     private List<String> exercicio2 = new ArrayList();
+
+    private List<String> exercicio3 = new ArrayList();
     public RespostasLista() {
         populaRespostas();
     }
@@ -37,6 +39,18 @@ public class RespostasLista {
                 "*", "*", "*",
                 "*", "*", "*"
         ));
+        exercicio3.addAll(Arrays.asList(
+                "*", "*", "*",
+                "4", "*", "*",
+                "4", "6", "*",
+                "4", "6", "12",
+                "4", "6", "12",
+                "18", "6", "12",
+                "*", "*", "*",
+                "*", "*", "*",
+                "*", "*", "*",
+                "*", "*", "*"
+        ));
     }
 
     public List<String> getExercicio1() {
@@ -48,7 +62,7 @@ public class RespostasLista {
     }
 
     public List<String> getExercicio3() {
-        return exercicio1;
+        return exercicio3;
     }
 }
 
