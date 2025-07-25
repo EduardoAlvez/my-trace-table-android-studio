@@ -431,15 +431,16 @@ public class Exercicio extends AppCompatActivity {
                 limparCampos(respostasCondicionais.getExercicio2());
             } else {
                 //DEIXANDO OCULTO OS CAMPOS QUE NÃO SERÃO USADOS
-                setViewsVisibility(View.INVISIBLE, legendaLinha6 , legendaLinha7, legendaLinha8, legendaLinha9, legendaLinha10);
+                setViewsVisibility(View.INVISIBLE,  legendaLinha5 , legendaLinha6 , legendaLinha7, legendaLinha8, legendaLinha9, legendaLinha10);
                 setViewsVisibility(View.INVISIBLE,
+                        campo13, campo14, campo15,
                         campo16, campo17, campo18,
                         campo19, campo20, campo21,
                         campo22, campo23, campo24,
                         campo25, campo26, campo27,
                         campo28, campo29, campo30);
 
-                imagemExercicio.setImageResource(R.drawable.condicional_exercicio1);
+                imagemExercicio.setImageResource(R.drawable.condicional_exercicio3);
                 bloqueaCampos(respostasCondicionais.getExercicio3());
                 limparCampos(respostasCondicionais.getExercicio3());
             }
